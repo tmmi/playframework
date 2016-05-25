@@ -3,7 +3,7 @@
  */
 package play.api.libs.openid
 
-import javax.inject.{ Singleton, Inject }
+import javax.inject.{ Named, Singleton, Inject }
 
 import play.api.{ Configuration, Environment, Application }
 import play.api.inject.Module
@@ -106,7 +106,7 @@ trait OpenIdClient {
 }
 
 @Singleton
-class WsOpenIdClient @Inject() (ws: WSClient, discovery: Discovery) extends OpenIdClient {
+class WsOpenIdClient @Inject() (@Named("baseWSClient") ws: WSClient, discovery: Discovery) extends OpenIdClient {
 
   /**
    * Retrieve the URL where the user should be redirected to start the OpenID authentication process

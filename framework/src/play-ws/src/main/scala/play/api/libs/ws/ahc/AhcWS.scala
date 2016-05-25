@@ -369,7 +369,7 @@ class AhcWSModule extends Module {
       bind[WSAPI].to[AhcWSAPI],
       bind[AhcWSClientConfig].toProvider[AhcWSClientConfigParser].in[Singleton],
       bind[WSClientConfig].toProvider[WSConfigParser].in[Singleton],
-      bind[WSClient].toProvider[WSClientProvider].in[Singleton]
+      bind[WSClient].qualifiedWith("baseWSClient").toProvider[WSClientProvider].in[Singleton]
     )
   }
 }
